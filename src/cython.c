@@ -23,8 +23,6 @@ int setupCython(int argc, char** argv)
     return 1; 
   }
 
-  Py_SetProgramName(program);
- 
   Py_Initialize();
 
   pmodule = PyImport_ImportModule("circulate");
