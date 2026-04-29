@@ -12,18 +12,25 @@ warnings.filterwarnings("ignore")
 scaler = None;
 svm_clf = None;
 
-features = [
-  "Commemorative", "Mintage", "Year"
-]
+features = ["Commemorative", "Mintage", "Year"]
 
 cdef public int create_circulator():
   global scaler, svm_clf
 
-  data = pandas.read_csv("src/data/data.csv", usecols = ["Year", "Commemorative", "Count", "Mintage"])
+  data = pandas.read_csv("src/data/data.csv", 
+                         usecols = ["Year", 
+                                    "Commemorative", 
+                                    "Count", 
+                                    "Mintage"])
   data = data.dropna(subset = ["Mintage"])
   data = data.dropna(subset = ["Year"])
   data = data.fillna(0)
-  data["Mintage"] = data["Mintage"].str.replace(',', '', regex=False).astype(float)
+  data["Mintage"] = (
+    data["Mintage"]
+    .str
+    .replace(',', '', regex=False)
+    .astype(float)
+  )
   data = data[data["Mintage"] != 0]
 
   X = data[features].values

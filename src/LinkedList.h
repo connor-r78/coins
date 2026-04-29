@@ -1,4 +1,6 @@
-// must include <stdlib.h> and <errno.h>
+#if !defined(EOF) || !defined(EXIT_SUCCESS) || !defined(EINVAL)
+  #error "must include <stdio.h>, <stdlib.h> and <errno.h>
+#endif
 
 #ifndef COINS_LINKED_LIST_H
 #define COINS_LINKED_LIST_H

@@ -5,6 +5,7 @@
 
 #include "circulate.h"
 #include "cython.h"
+#include "simulate.h"
 
 #include "LinkedList.h"
 
@@ -27,6 +28,7 @@ int main(int argc, char** argv)
       return 0;
     }
   }
-      
-  predict_circulation();
+
+  long simFlags = 0;
+  return simulate(simFlags);
 }
